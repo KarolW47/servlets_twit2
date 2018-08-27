@@ -4,6 +4,7 @@
 <form method="post" action="message">
     <input type="text" value="wpisz tekst wiadomosci" name="content">
     <input type="text" value="wpisz nazwe autora" name="author">
+    <input type="text" value="wpisz sekretne haslo" name="secret">
     <input type="submit" value="wyslij">
 </form>
 </body>

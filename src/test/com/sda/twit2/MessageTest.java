@@ -11,8 +11,9 @@ public class MessageTest {
         MessageCreator messageCreator = new MessageCreator();
         String content = "";
         String author = "";
+        String secret = "";
         //when
-        Message message = messageCreator.create(content, author);
+        Message message = messageCreator.create(content, author, secret);
         //then
         Assert.assertNotNull(message);
     }
@@ -23,8 +24,9 @@ public class MessageTest {
         MessageCreator messageCreator = new MessageCreator();
         String content = "nasza testowa wiadomosc";
         String author = "ktos";
+        String secret = "123";
         //given
-        Message message = messageCreator.create(content, author);
+        Message message = messageCreator.create(content, author, secret);
         //then
         Assert.assertEquals(content, message.getContent());
     }

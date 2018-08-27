@@ -13,9 +13,15 @@ public class AddMessageServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         MessageCreator messageCreator = new MessageCreator();
-        Message message = messageCreator.create(req.getParameter("content"), req.getParameter("author"));
+        Message message = messageCreator.create(req.getParameter("content"), req.getParameter("author"), req
+                .getParameter("secret"));
         req.setAttribute("message", message);
 
-        req.getRequestDispatcher("showMessage.jsp").forward(req,resp);
+
+        if (AuthenticationHolder.isAuth()) {
+            req.getRequestDispatcher("showMessage.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("wrongPass.jsp").forward(req, resp);
+        }
     }
 }
