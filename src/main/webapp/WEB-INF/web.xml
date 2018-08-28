@@ -12,6 +12,16 @@
         <url-pattern>/message</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.sda.twit2.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginUser</url-pattern>
+    </servlet-mapping>
+
+
     <filter>
         <filter-name>TestFilter</filter-name>
         <filter-class>com.sda.twit2.TestFilter</filter-class>

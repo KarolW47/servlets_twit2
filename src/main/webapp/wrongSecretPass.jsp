@@ -11,6 +11,8 @@
     <title>Error Page</title>
 </head>
 <body>
-WRONG PASSWORD!
+WRONG SECRET PASS!
+<br>
+<a href="sendMessage.jsp">Back</a>
 </body>
 </html>

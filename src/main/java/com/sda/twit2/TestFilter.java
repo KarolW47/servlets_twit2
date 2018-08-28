@@ -2,6 +2,7 @@ package com.sda.twit2;
 
 import javax.servlet.*;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.Enumeration;
 
 public class TestFilter implements Filter {
@@ -14,6 +15,8 @@ public class TestFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         AuthenticationHolder.setAuth(false);
+        String secretPassFromFile = TextFromFileReader.readFile( TextFromFileReader.resPath + "secret",
+                Charset.defaultCharset());
 
         Enumeration names = request.getParameterNames();
         while (names.hasMoreElements()) {
@@ -21,7 +24,7 @@ public class TestFilter implements Filter {
             if (currentParam.equals("secret")) {
                 String secretParam = request.getParameter("secret");
                 if (secretParam != null) {
-                    if (secretParam.equals("123")) {
+                    if (secretParam.equals(secretPassFromFile)) {
                         AuthenticationHolder.setAuth(true);
                     }
                 }

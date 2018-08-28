@@ -25,7 +25,7 @@ public class MessageTest {
         String content = "nasza testowa wiadomosc";
         String author = "ktos";
         String secret = "123";
-        //given
+        //when
         Message message = messageCreator.create(content, author, secret);
         //then
         Assert.assertEquals(content, message.getContent());
