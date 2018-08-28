@@ -15,12 +15,12 @@ public class TextFromFileReader {
     public static final String resPath = "c:/workspace/servlets_twit2/src/main/resources/";
 
 
-    static String readFile(String path, Charset encoding) throws IOException {
+    public static String readFile(String path, Charset encoding) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(path));
         return new String(encoded, encoding);
     }
 
-    static List<String> readLinesFromFile(String path) {
+    public static List<String> readLinesFromFile(String path) {
 
         List<String> list = new ArrayList<>();
 

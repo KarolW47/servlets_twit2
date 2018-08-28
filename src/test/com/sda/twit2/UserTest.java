@@ -1,5 +1,7 @@
 package com.sda.twit2;
 
+import com.sda.twit2.model.User;
+import com.sda.twit2.model.UserCreator;
 import org.junit.Assert;
 import org.junit.Test;
 

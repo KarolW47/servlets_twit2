@@ -1,4 +1,8 @@
-package com.sda.twit2;
+package com.sda.twit2.servlets;
+
+import com.sda.twit2.AuthenticationHolder_2;
+import com.sda.twit2.model.User;
+import com.sda.twit2.model.UserCreator;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

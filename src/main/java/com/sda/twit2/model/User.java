@@ -1,4 +1,4 @@
-package com.sda.twit2;
+package com.sda.twit2.model;
 
 public class User {
 

@@ -1,4 +1,7 @@
-package com.sda.twit2;
+package com.sda.twit2.filters;
+
+import com.sda.twit2.AuthenticationHolder_2;
+import com.sda.twit2.TextFromFileReader;
 
 import javax.servlet.*;
 import java.io.IOException;
