@@ -22,6 +22,12 @@ public class SecondTestFilter implements Filter {
         List<String> list = TextFromFileReader.readLinesFromFile(TextFromFileReader.resPath + "loginAndPassword");
         String loginFromFile = list.get(0);
         String passwordFromFile = list.get(1);
+        String loginFromFile_2 = list.get(3);
+        String passwordFromFile_2 = list.get(4);
+        String loginFromFile_3 = list.get(6);
+        String passwordFromFile_3 = list.get(7);
+        /// TODO: 29.08.2018 users from db, cause this not good solution 
+        
         String loginParam = "";
         String passwordParam = "";
 
@@ -39,9 +45,12 @@ public class SecondTestFilter implements Filter {
         if (loginParam != null && passwordParam != null) {
             if (loginParam.equals(loginFromFile) && passwordParam.equals(passwordFromFile)) {
                 AuthenticationHolder_2.setAuth(true);
+            } else if (loginParam.equals(loginFromFile_2) && passwordParam.equals(passwordFromFile_2)) {
+                AuthenticationHolder_2.setAuth(true);
+            } else if (loginParam.equals(loginFromFile_3) && passwordParam.equals(passwordFromFile_3)) {
+                AuthenticationHolder_2.setAuth(true);
             }
         }
-
         chain.doFilter(request, response);
     }
 
