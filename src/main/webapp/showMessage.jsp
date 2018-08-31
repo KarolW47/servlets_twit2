@@ -1,4 +1,8 @@
-<%@ page import="com.sda.twit2.model.Message" %><%--
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ page import="com.sda.twit2.hibernate.dao.MessageDao" %>
+<%@ page import="com.sda.twit2.hibernate.entity.Message" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: KaWa
   Date: 27.08.2018
@@ -11,10 +15,28 @@
     <title>Message</title>
 </head>
 
+<%
+    List<Message> messageList = MessageDao.getInstance().getAll();
+    request.setAttribute("messageList", messageList);
+%>
+
 <body>
-
-<p>message: <%=((Message)request.getAttribute("message")).getContent()%> <br>
-    author: <%=((Message)request.getAttribute("message")).getAuthor()%></p>
-
+<div>
+    <h2>Posted Messages:</h2>
+    <div>
+        <c:forEach var="message" items="${messageList}">
+            <table border="2" bgcolor="white">
+                <tr>
+                    <td colspan="3">
+                        <b>Message: </b> <c:out value="${message.content}"/>
+                    </td>
+                    <td colspan="3">
+                        <b>Author: </b> <c:out value="${message.user.login}"/>
+                    </td>
+                </tr>
+            </table>
+        </c:forEach>
+    </div>
+</div>
 </body>
 </html>

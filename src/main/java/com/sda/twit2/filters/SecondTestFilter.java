@@ -1,12 +1,14 @@
 package com.sda.twit2.filters;
 
 import com.sda.twit2.AuthenticationHolder_2;
-import com.sda.twit2.TextFromFileReader;
+import com.sda.twit2.hibernate.dao.UserDao;
+import com.sda.twit2.hibernate.entity.User;
 
 import javax.servlet.*;
 import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Optional;
 
 public class SecondTestFilter implements Filter {
     @Override
@@ -19,15 +21,8 @@ public class SecondTestFilter implements Filter {
 
         AuthenticationHolder_2.setAuth(false);
 
-        List<String> list = TextFromFileReader.readLinesFromFile(TextFromFileReader.resPath + "loginAndPassword");
-        String loginFromFile = list.get(0);
-        String passwordFromFile = list.get(1);
-        String loginFromFile_2 = list.get(3);
-        String passwordFromFile_2 = list.get(4);
-        String loginFromFile_3 = list.get(6);
-        String passwordFromFile_3 = list.get(7);
-        /// TODO: 29.08.2018 users from db, cause this not good solution 
-        
+        List<User> userList = UserDao.getInstance().getAll();
+
         String loginParam = "";
         String passwordParam = "";
 
@@ -43,15 +38,20 @@ public class SecondTestFilter implements Filter {
         }
 
         if (loginParam != null && passwordParam != null) {
-            if (loginParam.equals(loginFromFile) && passwordParam.equals(passwordFromFile)) {
+
+            String finalLoginParam = loginParam;
+            String finalPasswordParam = passwordParam;
+
+            Optional<User> loggedUser = userList.stream()
+                    .filter(user -> user.getLogin().equals(finalLoginParam) && user.getPassword().equals(finalPasswordParam))
+                    .findFirst();
+
+            if (loggedUser.isPresent()) {
                 AuthenticationHolder_2.setAuth(true);
-            } else if (loginParam.equals(loginFromFile_2) && passwordParam.equals(passwordFromFile_2)) {
-                AuthenticationHolder_2.setAuth(true);
-            } else if (loginParam.equals(loginFromFile_3) && passwordParam.equals(passwordFromFile_3)) {
-                AuthenticationHolder_2.setAuth(true);
+
             }
+            chain.doFilter(request, response);
         }
-        chain.doFilter(request, response);
     }
 
     @Override

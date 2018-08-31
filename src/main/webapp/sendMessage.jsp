@@ -11,7 +11,6 @@
 <h2>Send Message</h2>
 <form method="post" action="message">
     <input type="text" value="type message" name="content">
-    <input type="text" value="type author name" name="author">
     <input type="text" value="type secret password" name="secret">
     <input type="submit" value="send">
     <br>

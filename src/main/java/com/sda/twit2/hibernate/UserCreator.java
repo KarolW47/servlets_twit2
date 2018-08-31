@@ -1,4 +1,6 @@
-package com.sda.twit2.model;
+package com.sda.twit2.hibernate;
+
+import com.sda.twit2.hibernate.entity.User;
 
 public class UserCreator {
     public User create(String login, String password) {
