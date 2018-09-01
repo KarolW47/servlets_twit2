@@ -42,11 +42,11 @@ public class SecondTestFilter implements Filter {
             String finalLoginParam = loginParam;
             String finalPasswordParam = passwordParam;
 
-            Optional<User> loggedUser = userList.stream()
+            Optional<User> matcherUser = userList.stream()
                     .filter(user -> user.getLogin().equals(finalLoginParam) && user.getPassword().equals(finalPasswordParam))
                     .findFirst();
 
-            if (loggedUser.isPresent()) {
+            if (matcherUser.isPresent()) {
                 AuthenticationHolder_2.setAuth(true);
 
             }

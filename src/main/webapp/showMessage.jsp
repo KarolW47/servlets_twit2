@@ -36,6 +36,7 @@
                 </tr>
             </table>
         </c:forEach>
+        <%--ToDo przerobic, bug nie wyswietla wiadomosci--%>
     </div>
 </div>
 </body>
